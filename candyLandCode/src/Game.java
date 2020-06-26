@@ -1,6 +1,17 @@
 import java.util.*;
 import java.util.stream.Collectors;
 
+//Kathleen's Edits
+import javax.swing.*;
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.image.*;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 public class Game {
   /***** attributes: *****/
   List<Player> players;
@@ -20,7 +31,38 @@ public class Game {
   }
 
   /***** operations:  *****/
-  private void displayTitleScreen()
+  private void displayTitleScreen() {
+  /*** I made a separate class for the menu on mine but I thought I would add this and see what you think.
+  
+  public class displayTitleScreen extends Application { **/
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+      
+        Pane root = new Pane();
+        root.setPrefSize(800,600);
+
+        InputStream is = Files.newInputStream(Paths.get("src/mainMenu.png"));
+        Image img = new Image(is);
+        is.close();
+
+        ImageView imgView = new ImageView(img);
+        imgView.setFitWidth(800);
+        imgView.setFitHeight(600);
+
+        root.getChildren().addAll(imgView);
+
+        Scene scene = new Scene(root);
+
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+    
+    /**I launched the window using this outside. Would not be included in this section. 
+        public static void main(String[] args) {
+        launch(args);
+    }
+    **/
+  }
 
   private void displayRules()
 
