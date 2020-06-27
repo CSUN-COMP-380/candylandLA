@@ -22,22 +22,19 @@ public class menu extends JFrame{
 	}
 	
 	JPanel startButtonPanel;
-	JPanel helpButtonPanel;
+	JPanel rulesButtonPanel;
 	JPanel exitButtonPanel;
 	JButton startButton;
-	JButton helpButton;
+	JButton rulesButton;
 	JButton exitButton;
 	
-	Font StartFont = new Font("Time New Roman", Font.PLAIN, 30);
-	Font HelpFont = new Font("Time New Roman", Font.PLAIN, 30);
-	Font ExitFont = new Font("Time New Roman", Font.PLAIN, 30);
-	
 	TitleScreenHandlerS tsHandlerS = new TitleScreenHandlerS();
-	TitleScreenHandlerH tsHandlerH = new TitleScreenHandlerH();
+	TitleScreenHandlerR tsHandlerR = new TitleScreenHandlerR();
 	TitleScreenHandlerE tsHandlerE = new TitleScreenHandlerE();
 	
 	public menu() {
 		
+		//BGM
 		try {
 			URL url = menu.class.getResource("BGM.wav");
 			AudioInputStream audio = AudioSystem.getAudioInputStream(url);
@@ -56,51 +53,49 @@ public class menu extends JFrame{
 		
 		Image img = background_image.getImage();
 		Image temp_img = img.getScaledInstance(911,600,Image.SCALE_SMOOTH);
-		window = new JLabel("",background_image,JLabel.CENTER);
-		
+		window = new JLabel("",background_image,JLabel.CENTER);	
         window.setBounds(0, 0, 911, 600);
 		add(window);
 		
         setVisible(true);
-		
+        
+        //Play Button
 		startButtonPanel = new JPanel();
-		startButtonPanel.setBounds(355, 250, 200, 100);
+		startButtonPanel.setBounds(365, 230, 153, 60);
 		startButtonPanel.setBackground(new Color(0,0,0,0));
 		window.add(startButtonPanel);
 		
-		startButton = new JButton("START");
-		startButton.setBackground(Color.black);
-		startButton.setForeground(Color.white);
-		startButton.setFont(StartFont);
-		startButtonPanel.add(startButton);	
+		ImageIcon startImage = new ImageIcon("playButton.png");
+		startButton = new JButton(startImage);
+		startButton.addActionListener(tsHandlerS);
 		
-		helpButtonPanel = new JPanel();
-		helpButtonPanel.setBounds(355, 350, 200, 100);
-		helpButtonPanel.setBackground(new Color(0,0,0,0));
-		window.add(helpButtonPanel);
+		//Rules Button
+		rulesButtonPanel = new JPanel();
+		rulesButtonPanel.setBounds(340, 320, 191, 60);
+		rulesButtonPanel.setBackground(new Color(0,0,0,0));
+		window.add(rulesButtonPanel);
 		
-		helpButton = new JButton("HELP");
-		helpButton.setBackground(Color.black);
-		helpButton.setForeground(Color.white);
-		helpButton.setFont(HelpFont);
+		ImageIcon rulesImage = new ImageIcon("rulesButton.png");
+		rulesButton = new JButton(rulesImage);
+		rulesButton.addActionListener(tsHandlerR);
 		
+		//Exit Button
 		exitButtonPanel = new JPanel();
-		exitButtonPanel.setBounds(355, 450, 200, 100);
+		exitButtonPanel.setBounds(355, 410, 160, 60);
 		exitButtonPanel.setBackground(new Color(0,0,0,0));
 		window.add(exitButtonPanel);
-		
-		exitButton = new JButton("EXIT");
-		exitButton.setBackground(Color.black);
-		exitButton.setForeground(Color.white);
-		exitButton.setFont(HelpFont);
+
+		ImageIcon exitImage = new ImageIcon("quitButton.png");
+		exitButton = new JButton(exitImage);
 		exitButton.addActionListener(tsHandlerE);
 		
-		
+		//add all buttons to JFrame
 		startButtonPanel.add(startButton);
-		helpButtonPanel.add(helpButton);
+		rulesButtonPanel.add(rulesButton);
 		exitButtonPanel.add(exitButton);
 	}
 	
+	//start game
 	public class TitleScreenHandlerS implements ActionListener {
 		
 		@Override
@@ -110,7 +105,8 @@ public class menu extends JFrame{
 		}
 	}
 	
-	public class TitleScreenHandlerH implements ActionListener {
+	//Rules
+	public class TitleScreenHandlerR implements ActionListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
@@ -118,6 +114,8 @@ public class menu extends JFrame{
 			//help text	
 		}
 	}
+	
+	//Exit
 	public class TitleScreenHandlerE implements ActionListener {
 		
 		@Override
