@@ -67,6 +67,9 @@ public class menu extends JFrame{
 		
 		ImageIcon startImage = new ImageIcon("playButton.png");
 		startButton = new JButton(startImage);
+		startButton.setOpaque(false);
+		startButton.setContentAreaFilled(false);
+		startButton.setBorderPainted(false);
 		startButton.addActionListener(tsHandlerS);
 		
 		//Rules Button
@@ -77,6 +80,9 @@ public class menu extends JFrame{
 		
 		ImageIcon rulesImage = new ImageIcon("rulesButton.png");
 		rulesButton = new JButton(rulesImage);
+		rulesButton.setOpaque(false);
+		rulesButton.setContentAreaFilled(false);
+		rulesButton.setBorderPainted(false);
 		rulesButton.addActionListener(tsHandlerR);
 		
 		//Exit Button
@@ -87,6 +93,9 @@ public class menu extends JFrame{
 
 		ImageIcon exitImage = new ImageIcon("quitButton.png");
 		exitButton = new JButton(exitImage);
+		exitButton.setOpaque(false);
+		exitButton.setContentAreaFilled(false);
+		exitButton.setBorderPainted(false);
 		exitButton.addActionListener(tsHandlerE);
 		
 		//add all buttons to JFrame
