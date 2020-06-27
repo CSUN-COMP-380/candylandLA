@@ -1,5 +1,4 @@
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -24,6 +23,8 @@ public class menu extends JFrame{
 	JPanel startButtonPanel;
 	JPanel rulesButtonPanel;
 	JPanel exitButtonPanel;
+	JPanel rulesPagePanel;
+	
 	JButton startButton;
 	JButton rulesButton;
 	JButton exitButton;
@@ -43,16 +44,15 @@ public class menu extends JFrame{
 			music.loop(-1);
 		} catch (Exception ex) {}
 		
-		//frame
+		//background
 		JLabel window;
 		setSize(911,600);
 		setLayout(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		//background
-		ImageIcon background_image = new ImageIcon("menu.png");
 		
-		Image img = background_image.getImage();
-		Image temp_img = img.getScaledInstance(911,600,Image.SCALE_SMOOTH);
+		ImageIcon background_image = new ImageIcon("menu.png");	
+		//Image img = background_image.getImage();
+		//Image temp_img = img.getScaledInstance(911,600,Image.SCALE_SMOOTH);
 		window = new JLabel("",background_image,JLabel.CENTER);	
         window.setBounds(0, 0, 911, 600);
 		add(window);
@@ -95,6 +95,26 @@ public class menu extends JFrame{
 		exitButtonPanel.add(exitButton);
 	}
 	
+	public void rulesPage() {
+		
+		JFrame rulesFrame = new JFrame("RULES");
+		rulesFrame.setVisible(true);
+		rulesFrame.setSize(911,611);
+		
+		JLabel rulesPage = new JLabel();
+		rulesPage.setSize(911,600);
+		rulesPage.setLayout(null);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		
+		ImageIcon background_image = new ImageIcon("rulesPage.png");	
+		//Image img = background_image.getImage();
+		//Image temp_img = img.getScaledInstance(911,600,Image.SCALE_SMOOTH);
+		rulesPage = new JLabel("",background_image,JLabel.CENTER);	
+        rulesPage.setBounds(0, 0, 911, 600);
+		
+		rulesFrame.add(rulesPage);
+	}
+	
 	//start game
 	public class TitleScreenHandlerS implements ActionListener {
 		
@@ -111,7 +131,7 @@ public class menu extends JFrame{
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		
-			//help text	
+			rulesPage();
 		}
 	}
 	
