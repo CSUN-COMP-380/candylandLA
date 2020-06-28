@@ -112,6 +112,7 @@ public class menu extends JFrame{
 	
 	public void rulesPage() {
 		
+		//Rules page Frame
 		rulesFrame = new JFrame("RULES");
 		rulesFrame.setVisible(true);
 		rulesFrame.setSize(911,611);
@@ -121,7 +122,7 @@ public class menu extends JFrame{
 		rulesPage.setLayout(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
-		
+		//Rules page background
 		ImageIcon background_image = new ImageIcon("rulesPage.png");	
 		rulesPage = new JLabel("",background_image,JLabel.CENTER);	
         rulesPage.setBounds(0, 0, 911, 600);
@@ -173,6 +174,7 @@ public class menu extends JFrame{
 		}
 	}
 	
+	//Closing Rules Page Frame
 	public class rulesScreenHandler implements ActionListener {
 		
 		@Override
