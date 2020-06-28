@@ -19,7 +19,6 @@ public class menu extends JFrame{
 		new menu();
 	}
 	
-	JFrame main;
 	JFrame rulesFrame;
 	JPanel backButtonPanel;
 	
@@ -53,10 +52,10 @@ public class menu extends JFrame{
 		//Image temp_img = img.getScaledInstance(911,600,Image.SCALE_SMOOTH);
 		window = new JLabel("",background_image,JLabel.CENTER);	
         window.setBounds(0, 0, 911, 600);
-        main.add(window);
+        add(window);
 		
         setVisible(true);
-        
+		
         //Play Button
 		startButtonPanel = new JPanel();
 		startButtonPanel.setBounds(365, 230, 153, 60);
@@ -67,6 +66,7 @@ public class menu extends JFrame{
 		startButton = new JButton(startImage);
 		startButton.setOpaque(false);
 		startButton.setContentAreaFilled(false);
+		startButton.setBorder(null);
 		startButton.setBorderPainted(false);
 		startButton.addActionListener(tsHandlerS);
 		
@@ -80,6 +80,7 @@ public class menu extends JFrame{
 		rulesButton = new JButton(rulesImage);
 		rulesButton.setOpaque(false);
 		rulesButton.setContentAreaFilled(false);
+		rulesButton.setBorder(null);
 		rulesButton.setBorderPainted(false);
 		rulesButton.addActionListener(tsHandlerR);
 		
@@ -93,6 +94,7 @@ public class menu extends JFrame{
 		exitButton = new JButton(exitImage);
 		exitButton.setOpaque(false);
 		exitButton.setContentAreaFilled(false);
+		exitButton.setBorder(null);
 		exitButton.setBorderPainted(false);
 		exitButton.addActionListener(tsHandlerE);
 		
@@ -112,7 +114,6 @@ public class menu extends JFrame{
 	
 	public void rulesPage() {
 		
-		//Rules page Frame
 		rulesFrame = new JFrame("RULES");
 		rulesFrame.setVisible(true);
 		rulesFrame.setSize(911,611);
@@ -122,7 +123,7 @@ public class menu extends JFrame{
 		rulesPage.setLayout(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
-		//Rules page background
+		
 		ImageIcon background_image = new ImageIcon("rulesPage.png");	
 		rulesPage = new JLabel("",background_image,JLabel.CENTER);	
         rulesPage.setBounds(0, 0, 911, 600);
@@ -136,6 +137,7 @@ public class menu extends JFrame{
 		backButton = new JButton(backMenu);
 		backButton.setOpaque(false);
 		backButton.setContentAreaFilled(false);
+		backButton.setBorder(null);
 		backButton.setBorderPainted(false);
 		backButton.addActionListener(rsHandler);
         
@@ -174,7 +176,6 @@ public class menu extends JFrame{
 		}
 	}
 	
-	//Closing Rules Page Frame
 	public class rulesScreenHandler implements ActionListener {
 		
 		@Override
