@@ -1,5 +1,4 @@
 import java.awt.Color;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
@@ -20,6 +19,10 @@ public class menu extends JFrame{
 		new menu();
 	}
 	
+	JFrame main;
+	JFrame rulesFrame;
+	JPanel backButtonPanel;
+	
 	JPanel startButtonPanel;
 	JPanel rulesButtonPanel;
 	JPanel exitButtonPanel;
@@ -28,21 +31,16 @@ public class menu extends JFrame{
 	JButton startButton;
 	JButton rulesButton;
 	JButton exitButton;
+	JButton backButton;
+	
+	JLabel rulesPage;
 	
 	TitleScreenHandlerS tsHandlerS = new TitleScreenHandlerS();
 	TitleScreenHandlerR tsHandlerR = new TitleScreenHandlerR();
 	TitleScreenHandlerE tsHandlerE = new TitleScreenHandlerE();
+	rulesScreenHandler rsHandler = new rulesScreenHandler();
 	
 	public menu() {
-		
-		//BGM
-		try {
-			URL url = menu.class.getResource("BGM.wav");
-			AudioInputStream audio = AudioSystem.getAudioInputStream(url);
-			Clip music = AudioSystem.getClip();
-			music.open(audio);
-			music.loop(-1);
-		} catch (Exception ex) {}
 		
 		//background
 		JLabel window;
@@ -55,7 +53,7 @@ public class menu extends JFrame{
 		//Image temp_img = img.getScaledInstance(911,600,Image.SCALE_SMOOTH);
 		window = new JLabel("",background_image,JLabel.CENTER);	
         window.setBounds(0, 0, 911, 600);
-		add(window);
+        main.add(window);
 		
         setVisible(true);
         
@@ -98,15 +96,23 @@ public class menu extends JFrame{
 		exitButton.setBorderPainted(false);
 		exitButton.addActionListener(tsHandlerE);
 		
-		//add all buttons to JFrame
 		startButtonPanel.add(startButton);
 		rulesButtonPanel.add(rulesButton);
 		exitButtonPanel.add(exitButton);
+		
+		//BGM
+				try {
+					URL url = menu.class.getResource("BGM.wav");
+					AudioInputStream audio = AudioSystem.getAudioInputStream(url);
+					Clip music = AudioSystem.getClip();
+					music.open(audio);
+					music.loop(-1);
+				} catch (Exception ex) {}
 	}
 	
 	public void rulesPage() {
 		
-		JFrame rulesFrame = new JFrame("RULES");
+		rulesFrame = new JFrame("RULES");
 		rulesFrame.setVisible(true);
 		rulesFrame.setSize(911,611);
 		
@@ -115,13 +121,26 @@ public class menu extends JFrame{
 		rulesPage.setLayout(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
+		
 		ImageIcon background_image = new ImageIcon("rulesPage.png");	
-		//Image img = background_image.getImage();
-		//Image temp_img = img.getScaledInstance(911,600,Image.SCALE_SMOOTH);
 		rulesPage = new JLabel("",background_image,JLabel.CENTER);	
         rulesPage.setBounds(0, 0, 911, 600);
 		
+        //Back to menu button
+        backButtonPanel = new JPanel();
+		backButtonPanel.setBounds(635, 430, 96, 40);
+		backButtonPanel.setBackground(new Color(0,0,0,0));
+		
+		ImageIcon backMenu = new ImageIcon("backMenu.png");
+		backButton = new JButton(backMenu);
+		backButton.setOpaque(false);
+		backButton.setContentAreaFilled(false);
+		backButton.setBorderPainted(false);
+		backButton.addActionListener(rsHandler);
+        
 		rulesFrame.add(rulesPage);
+		rulesPage.add(backButtonPanel);
+		backButtonPanel.add(backButton);
 	}
 	
 	//start game
@@ -151,6 +170,15 @@ public class menu extends JFrame{
 		public void actionPerformed(ActionEvent arg0) {
 			
 			System.exit(0);		
+		}
+	}
+	
+	public class rulesScreenHandler implements ActionListener {
+		
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			
+			rulesFrame.dispose();;	
 		}
 	}
 	
