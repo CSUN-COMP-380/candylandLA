@@ -13,5 +13,5 @@ public class Card {
   }
 
   /***** operations:  *****/
-  private void display()
+  private void display() {}
 }
