@@ -4,14 +4,9 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.Cursor;
 
 // awt events
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseEvent;
 // swing
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -22,25 +17,16 @@ import javax.swing.JSplitPane;
 import javax.swing.JScrollPane;
 import javax.swing.JDesktopPane;
 import javax.swing.JPanel;
-import javax.swing.JLabel;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.ImageIcon;
 import javax.swing.JTree;
-import javax.swing.JInternalFrame;
-import javax.swing.SwingUtilities;
 
 // swing event
-import javax.swing.event.TreeSelectionEvent;
-import javax.swing.event.TreeSelectionListener;
 
 // swing tree
-import javax.swing.tree.DefaultTreeModel;
-import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.TreePath;
 
-import javax.swing.JTree;
 
 public class Candyland {
 
@@ -98,7 +84,7 @@ private void buildDesktop() {
       @Override
       protected void paintComponent(Graphics g)
       {
-         ImageIcon icon = new ImageIcon("assets/map.png");
+         ImageIcon icon = new ImageIcon("assets/screens/map.png");
          Image image = icon.getImage();
 
          int x=0, y=0;
@@ -195,7 +181,7 @@ private void buildFrame() {
    frame = new JFrame("Candyland:Los Angeles");
    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
    frame.setLayout(new BorderLayout());
-   frame.setIconImage(Toolkit.getDefaultToolkit().getImage("assets/menuButton.png"));
+   frame.setIconImage(Toolkit.getDefaultToolkit().getImage("assets/buttons/menuButton.png"));
 
    // add label panel
    frame.getContentPane().add(labelPanel, BorderLayout.SOUTH);
