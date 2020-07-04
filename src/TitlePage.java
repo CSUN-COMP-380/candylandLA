@@ -1,30 +1,30 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class TitlePage {
+public class TitlePage implements ActionListener {
 
-    //Constructor
     public TitlePage() {
 
-        JFrame titleFrame = new JFrame("Candyland: Los Angeles");
-        titleFrame.setSize(911,611);
-        titleFrame.setLayout(null);
-        titleFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        JFrame frame = new JFrame("Candyland: Los Angeles");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         ImageIcon titleImg = new ImageIcon("src/titlePage.png");
-        Image img = titleImg.getImage();
-        Image newImg = img.getScaledInstance(911,611, Image.SCALE_SMOOTH);
+        Image img = (titleImg.getImage());
+        Image newImg = img.getScaledInstance( 911, 611,  java.awt.Image.SCALE_SMOOTH ) ;
         titleImg = new ImageIcon(newImg);
 
-        JLabel titleBackground = new JLabel("",titleImg,JLabel.CENTER);
-        titleBackground.setBounds(0,0,911,611);
-        
-        titleFrame.add(titleBackground);
-        titleFrame.setVisible(true);
-        
-        /**Work in Progress
-         * Need to click screen to move on to Menu.
-         * **/
+        JButton titleBackground = new JButton(titleImg);
+        frame.add(titleBackground);
+        frame.setSize(911,611);
+        frame.setVisible(true);
+
+        titleBackground.addActionListener(this);
     }
-    
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        Menu menu = new Menu();
+    }
 }
